@@ -22,7 +22,7 @@ zap = ZAPv2
 # zap = ZAPv2(proxies={'http': 'http://192.168.56.101/', 'https': 'http://192.168.56.101/'})
 
 
-zap.context.import_context('DVWAAdmin.context', apikey)
+zap.context.import_context('dvwa.context', apikey)
 
 
 # print('Accessing target %s' % target)
