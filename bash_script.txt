@@ -1,0 +1,10 @@
+cd ~
+# Generate API key and write it to a file
+echo cat /dev/urandom | env LC_CTYPE=C tr -dc 'a-zA-Z0-9' | fold -w 28 | head -n 1 > apikey.txt
+
+# Add Zap command here, append this to the end '| cat apikey.txt'
+
+# Start python script
+
+# Delete apikey.txt
+# rm apikey.txt
