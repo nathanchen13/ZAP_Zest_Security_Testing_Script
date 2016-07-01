@@ -1,4 +1,4 @@
-f = open('api.txt', "r")
+f = open('apikey.txt', "r")
 lines = f.readlines()
 f.close()
 apikey = lines[0]
