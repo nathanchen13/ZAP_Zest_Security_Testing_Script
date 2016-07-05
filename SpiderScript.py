@@ -19,7 +19,7 @@ f = open('ip.txt', "r")
 ip = f.readline().strip('inet ').strip('\n')
 f.close()
 
-target = 'http://172.31.2.169/dvwa/login.php'
+target = 'http://' + ip + '/dvwa/login.php'
 zap = ZAPv2()
 #The following line must be the ip of where ZAP is, so for us it is localhost:8090
 #Also if you are not running ZAP on port 8080 then you must include the line below 
@@ -34,7 +34,8 @@ zap.urlopen(target)
 time.sleep(2)
 
 print('Spidering target %s' % target)
-zap.spider.scan_as_user('2', '20', 'http://172.31.2.169/dvwa', subtreeonly = True, apikey = api)
+dvwa = 'http://' + ip + '/dvwa'
+zap.spider.scan_as_user('2', '20', dvwa, subtreeonly = True, apikey = api)
 
 
 # scanid = zap.spider.scan(target)
@@ -49,7 +50,7 @@ time.sleep(5)
 
 print('Scanning target %s' % target)
 
-zap.ascan.scan_as_user('http://172.31.2.169/dvwa', 2, 20, apikey = api)
+zap.ascan.scan_as_user(dvwa, 2, 20, apikey = api)
 
 # scanid = zap.ascan.scan(target)
 # while(int(zap.ascan.status(scanid)) < 100):
