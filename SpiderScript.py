@@ -17,6 +17,10 @@ f.close()
 
 target = 'http://172.16.73.129/dvwa/login.php'
 zap = ZAPv2()
+#The following line must be the ip of where ZAP is, so for us it is localhost:8090
+#Also if you are not running ZAP on port 8080 then you must include the line below 
+#with the correct port numbers
+zap = ZAPv2(proxies={'http': 'http://localhost:8090', 'https': 'http://localhost:8090'})
 
 zap.context.import_context('dvwa.context', apikey = api)
 
@@ -26,7 +30,7 @@ zap.urlopen(target)
 time.sleep(2)
 
 print('Spidering target %s' % target)
-zap.spider.scan_as_user('2', '4', 'http://172.16.73.129/dvwa/', apikey = api)
+zap.spider.scan_as_user('2', '4', 'http://192.168.56.101/dvwa/', subtreeonly = True, apikey = api)
 
 
 # scanid = zap.spider.scan(target)
