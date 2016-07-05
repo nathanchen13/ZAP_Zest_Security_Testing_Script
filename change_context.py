@@ -3,7 +3,7 @@ f.readline()
 ip = f.readline().strip('inet ').strip('\n')
 f.close()
 
-f = open('InstanceDVWA.context', "r")
+f = open('InstanceDVWA.context', 'r')
 filedata = f.read()
 f.close()
 
