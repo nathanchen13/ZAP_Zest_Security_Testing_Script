@@ -16,6 +16,7 @@ api = f.read().strip('\n')
 f.close()
 
 f = open('ip.txt', "r")
+f.readline()
 ip = f.readline().strip('inet ').strip('\n')
 f.close()
 
