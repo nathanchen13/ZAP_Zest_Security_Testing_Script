@@ -15,14 +15,18 @@ f = open('apikey.txt', "r")
 api = f.read().strip('\n')
 f.close()
 
-target = 'http://172.16.73.129/dvwa/login.php'
+f = open('ip.txt', "r")
+ip = f.readline().strip('inet ').strip('\n')
+f.close()
+
+target = 'http://172.31.2.169/dvwa/login.php'
 zap = ZAPv2()
 #The following line must be the ip of where ZAP is, so for us it is localhost:8090
 #Also if you are not running ZAP on port 8080 then you must include the line below 
 #with the correct port numbers
-zap = ZAPv2(proxies={'http': 'http://localhost:8090', 'https': 'http://localhost:8090'})
+#zap = ZAPv2(proxies={'http': 'http://localhost:8090', 'https': 'http://localhost:8090'})
 
-zap.context.import_context('dvwa.context', apikey = api)
+zap.context.import_context('/home/centos/ZAP_2.5.0/ZAP_Zest_Security_Testing_Script/InstanceDVWA.context', apikey = api)
 
 print('Accessing target %s' % target)
 
@@ -30,7 +34,7 @@ zap.urlopen(target)
 time.sleep(2)
 
 print('Spidering target %s' % target)
-zap.spider.scan_as_user('2', '4', 'http://192.168.56.101/dvwa/', subtreeonly = True, apikey = api)
+zap.spider.scan_as_user('2', '20', 'http://172.31.2.169/dvwa', subtreeonly = True, apikey = api)
 
 
 # scanid = zap.spider.scan(target)
@@ -45,7 +49,7 @@ time.sleep(5)
 
 print('Scanning target %s' % target)
 
-zap.ascan.scan_as_user('http://172.16.73.129/dvwa/', 2, 4, apikey = api)
+zap.ascan.scan_as_user('http://172.31.2.169/dvwa', 2, 20, apikey = api)
 
 # scanid = zap.ascan.scan(target)
 # while(int(zap.ascan.status(scanid)) < 100):
@@ -57,6 +61,9 @@ print('Hosts: ' + ', '.join(zap.core.hosts))
 print('Alerts: ')
 pprint (zap.core.alerts())
 
-f = open('htmlreport.html','w')
-f.write(zap.core.htmlreport(apikey = api))
+f = open('xmlreport.xml','w')
+f2 = open('htmlreport.html','w')
+f.write(zap.core.xmlreport(apikey = api))
+f2.write(zap.core.htmlreport(apikey = api))
 f.close()
+f2.close()
