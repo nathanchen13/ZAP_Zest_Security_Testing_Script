@@ -8,8 +8,9 @@ sudo /opt/lampp/lampp start
 python change_context.py
 
 # Generate the random string for the API key
-cat /dev/urandom | env LC_CTYPE=C tr -dc 'a-zA-Z0-9' | fold -w 28 | head -n 1 > $WORKSPACE/apikey.txt
+cat /dev/urandom | env LC_CTYPE=C tr -dc 'a-zA-Z0-9' | fold -w 28 | head -n 1 > /home/centos/jenkins_root/workspace/ZAP/apikey.txt
 cat /dev/urandom | env LC_CTYPE=C tr -dc 'a-zA-Z0-9' | fold -w 28 | head -n 1 > ~/ZAP_2.5.0/apikey.txt
+
 # Start ZAP
 cd ~/ZAP_2.5.0/
 ./zap.sh -daemon -config api.key=`cat apikey.txt` &
