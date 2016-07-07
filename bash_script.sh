@@ -9,7 +9,7 @@ python change_context.py
 
 # Generate the random string for the API key
 cat /dev/urandom | env LC_CTYPE=C tr -dc 'a-zA-Z0-9' | fold -w 28 | head -n 1 > /home/centos/jenkins_root/workspace/ZAP/apikey.txt
-cat /dev/urandom | env LC_CTYPE=C tr -dc 'a-zA-Z0-9' | fold -w 28 | head -n 1 > ~/ZAP_2.5.0/apikey.txt
+mv /home/centos/jenkins_root/workspace/ZAP/apikey.txt ~/ZAP_2.5.0/apikey.txt
 
 # Start ZAP
 cd ~/ZAP_2.5.0/
