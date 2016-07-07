@@ -1,7 +1,7 @@
 # Start DVWA
 sudo /opt/lampp/lampp start
 
-cd ~/ZAP_2.5.0/ZAP_Zest_Security_Testing_Script
+cd ~/ZAP_2.5.0/
 
 
 # Write IP to file inside repo
