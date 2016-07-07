@@ -11,7 +11,8 @@ python change_context.py
 cat /dev/urandom | env LC_CTYPE=C tr -dc 'a-zA-Z0-9' | fold -w 28 | head -n 1 > apikey.txt
 
 # Start ZAP
-./home/centos/ZAP_2.5.0/zap.sh -daemon -config api.key=`cat apikey.txt` &
+cd ~/ZAP_2.5.0/
+./zap.sh -daemon -config api.key=`cat apikey.txt` &
 sleep 1m
 
 # Run ZAP script
