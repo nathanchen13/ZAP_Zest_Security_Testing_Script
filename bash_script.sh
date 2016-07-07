@@ -2,8 +2,7 @@
 sudo /opt/lampp/lampp start
 
 cd ~/ZAP_2.5.0/ZAP_Zest_Security_Testing_Script
-git reset --hard HEAD
-git pull
+
 
 # Write IP to file inside repo
 /sbin/ip addr | grep -Eo 'inet [0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' > ip.txt
@@ -29,5 +28,9 @@ sleep 1m
 python SpiderScript.py
 mv SpiderScript.py ZAP_Zest_Security_Testing_Script
 
+mv htmlreport.html $WORKSPACE
+mv xmlreport.xml $WORKSPACE
+
 # Delete apikey.txt
 rm apikey.txt
+
