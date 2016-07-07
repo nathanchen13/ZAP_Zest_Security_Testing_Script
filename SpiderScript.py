@@ -27,7 +27,7 @@ zap = ZAPv2()
 #with the correct port numbers
 #zap = ZAPv2(proxies={'http': 'http://localhost:8090', 'https': 'http://localhost:8090'})
 
-zap.context.import_context('/home/centos/ZAP_2.5.0/ZAP_Zest_Security_Testing_Script/InstanceDVWA.context', apikey = api)
+zap.context.import_context('/home/centos/jenkins_root/workspace/ZAPInstanceDVWA.context', apikey = api)
 
 print('Accessing target %s' % target)
 
