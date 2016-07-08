@@ -3,6 +3,7 @@ sudo /opt/lampp/lampp start
 
 # Write IP to file inside repo
 /sbin/ip addr | grep -Eo 'inet [0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' > ~/ZAP_2.5.0/ip.txt
+cp ~/ZAP_2.5.0/ip.txt /home/centos/jenkins_root/workspace/ZAP/ip.txt
 
 # Run script to change context to new IP
 python change_context.py
